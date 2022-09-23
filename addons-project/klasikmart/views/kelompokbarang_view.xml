@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- klasikmart.kelompokbarang tree view TABEL DI ODOO KelompokBarang.py -->
+    <record id="klasikmart_kelompokbarang_view_tree" model="ir.ui.view">
+        <field name="name">klasikmart.kelompokbarang.view.tree</field>
+        <field name="model">klasikmart.kelompokbarang</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="kode_kelompok"/>
+                <field name="kode_rak"/>
+                <field name="jml_item"/>
+                <field name="daftar"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- klasikmart.kelompokbarang form view TABEL FORM INPUT DI ODOO KelompokBarang.py-->
+    <record id="klasikmart_kelompokbarang_view_form" model="ir.ui.view">
+        <field name="name">klasikmart.kelompokbarang.view.form</field>
+        <field name="model">klasikmart.kelompokbarang</field>
+        <field name="arch" type="xml">
+            <form string="Genre Musik">
+                <sheet>  <!--SHEET UNTUK NEW PAGE FORM INPUT ODOO-->
+
+                    <group name="kelompok" string="Deskripsi"> <!--KOLOM LETAK BARANG-->
+                        <!-- Add your fields here -->
+                        <field name="name"/>
+                        <field name="kode_kelompok"/>
+                        <field name="jml_item"/>
+                    </group>
+
+                    <group name="rak" string="Penyimpanan"> <!--KOLOM LETAK BARANG-->
+                        <field name="kode_rak"/>
+                        <field name="barang_ids"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- klasikmart.kelompokbarang action window -->
+    <record id="klasikmart_kelompokbarang_action" model="ir.actions.act_window">
+        <field name="name">Genre Musik</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">klasikmart.kelompokbarang</field>
+        <field name="view_mode">tree,form</field>
+        
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="klasikmart_kelompokbarang_menu_act" 
+            name="Genre Musik" 
+            parent="klasikmart_barang_menu_categ" 
+            action="klasikmart_kelompokbarang_action" 
+            sequence="10"/>
+
+</odoo>

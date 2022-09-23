@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_klasikmart_kelompokbarang,access.klasikmart.kelompokbarang,model_klasikmart_kelompokbarang,,1,1,1,1
+access_klasikmart_barang,access.klasikmart.barang,model_klasikmart_barang,,1,1,1,1
+access_klasikmart_person,access.klasikmart.person,model_klasikmart_person,,1,1,1,1
+access_klasikmart_supplier,access.klasikmart.supplier,model_klasikmart_supplier,,1,1,1,1
+access_klasikmart_penjualan,access.klasikmart.penjualan,model_klasikmart_penjualan,,1,1,1,1
+access_klasikmart_detailpenjualan,access.klasikmart.detailpenjualan,model_klasikmart_detailpenjualan,,1,1,1,1
+
+access_klasikmart_barangdatang,access.klasikmart.barangdatang,model_klasikmart_barangdatang,,1,1,1,1

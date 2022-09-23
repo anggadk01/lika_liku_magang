@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<odoo>
+
+
+    <record id="res_partner_konsumen_view_tree_inherit" model="ir.ui.view">
+        <field name="name">res.partner.inherit.view.tree</field>
+        <field name="model">res.partner</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">                          
+                <field name="poin"/>
+            </xpath>
+            <xpath expr="//field[@name='function']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> 
+        </field>
+    </record>
+
+
+    <record id="res_partner_konsumen_view_form_inherit" model="ir.ui.view">
+        <field name="name">Form Konsumen</field>
+        <field name="model">res.partner</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">                          
+                <field name="poin"/>
+                <field name="is_konsumen"/>
+            </xpath> 
+
+            <!-- INI SINTAKS MENGHAPUS MENU JOB POSOTION DENGAN NAMA FIELD FUNCTION -->
+            <xpath expr="//field[@name='function']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="string">No.KTP</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- res.partner inherit search view UNTUK FILTER SEARCH KONSUMEN  -->
+    <record id="res_partner_konsumen_inherit_search" model="ir.ui.view">
+        <field name="name">res.partner.inherit.view.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position='after'>
+            <filter name="konsumen" string="Konsumen" domain="[('is_konsumen', '=', 'True')]"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- rest.partner action window  KANBAN BUAT TAMPILAN KONSUMEN BAGUS-->
+    <record id="res_partner_konsumen_action" model="ir.actions.act_window">
+        <field name="name">Konsumen</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">
+            {
+                'search_default_konsumen' :1,
+                'default_is_konsumen' : True
+
+            }
+        </field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="konsumen_view_menu_act" 
+            name="Konsumen"  
+            parent="klasikmart_menu_root" 
+            action="res_partner_konsumen_action" 
+            sequence="30"/>
+
+</odoo>

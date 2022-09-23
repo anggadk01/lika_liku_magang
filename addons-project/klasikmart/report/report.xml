@@ -1,0 +1,37 @@
+<odoo>
+
+        <!-- BERKORELASI DI DAFTARSUPPLIEREXCEL.PY UTK MENJALANKAN SCIRPTNYA -->
+        <!-- SINTAKS INI UTK MEMUNCULKAN BOTTOM PRINT DI SUPLIER -->
+        <record id="report_supplier_xlsx" model="ir.actions.report">
+            <field name="name">Supplier Excel</field>
+            <field name="model">klasikmart.supplier</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">klasikmart.report_supplier_xlsx</field>
+            <field name="report_file">klasikmart.report_supplier_xlsx</field>
+            <field name="binding_model_id" ref="model_klasikmart_supplier"/>
+            <field name="binding_type">report</field>
+        </record>
+        
+
+        <!-- <record id="report_penjualan_xlsx" model="ir.actions.report">
+            <field name="name">Supplier Excel</field>
+            <field name="model">klasikmart.penjualan</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">klasikmart.report_penjualan_xlsx</field>
+            <field name="report_file">klasikmart.report_penjualan_xlsx</field>
+            <field name="binding_model_id" ref="model_klasikmart_penjualan"/>
+            <field name="binding_type">report</field>
+        </record> -->
+
+        <!-- SINTAKS INI UTK MEMUNCULKAN BOTTOM PRINT DI PENJUALAN -->
+        <record id="report_penjualan_pdf" model="ir.actions.report">
+            <field name="name">Faktur PDF</field>
+            <field name="model">klasikmart.penjualan</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">klasikmart.report_penjualan_pdf</field>
+            <field name="report_file">klasikmart.report_penjualan_pdf</field>
+            <field name="binding_model_id" ref="model_klasikmart_penjualan"/>
+            <field name="binding_type">report</field>
+        </record>
+
+</odoo>

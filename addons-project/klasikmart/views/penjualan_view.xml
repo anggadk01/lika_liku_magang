@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- INI GABUNG KE MENU.XML -->
+
+    <!-- klasikmart.penjualan tree view -->
+    <record id="klasikmart_penjualan_view_tree" model="ir.ui.view">
+        <field name="name">List Penjualan</field>
+        <field name="model">klasikmart.penjualan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- SAMAIN DENGAN ISI YG ADA DI PENJUALAN.PY TREENYA -->
+                <field name="name"/>
+                <field name="nama_pembeli"/>
+                <field name="tgl_penjualan"/>
+                <field name="total_bayar"/> 
+                <field name="state"/>               
+            </tree>
+        </field>
+    </record>
+
+    <!-- klasikmart.penjualan form view -->
+    <record id="klasikmart_penjualan_view_form" model="ir.ui.view">
+        <field name="name">Form Penjualan</field>
+        <field name="model">klasikmart.penjualan</field>
+        <field name="arch" type="xml">
+            <form string="Form Penjualan">
+                <header>
+                    <!-- INI UNTUK MENAMPILKAN STATE DI BAR STATUS HEADER & BUTTON CONFIRM -->
+                    <button string="Confirm" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
+                    <button string="Done" name="action_done" type="object" class="oe_highlight" states="confirm"/>
+                    <button string="Cancel" name="action_cancelled" type="object" class="btn btn-warning" states="confirm" confirm="Anda yakin ingin meng-cancel form ini?"/>
+                    <button string="Back to Draft" name="action_draft" type="object" class="btn btn-danger" states="cancelled" confirm="Anda yakin ingin mengedit form ini?"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="name" attrs = "{'readonly': [('state','!=','draft')]}"/>
+                        <field name="nama_pembeli" attrs = "{'readonly': [('state','!=','draft')]}"/>
+                        <field name="tgl_penjualan" attrs = "{'readonly': [('state','!=','draft')]}"/>
+                        <field name="total_bayar" attrs = "{'readonly': [('state','!=','draft')]}"/> 
+                    </group>
+                    <group name="daftarbarang" string="Daftar Barang">
+                       <field name="detailpenjualan_ids" attrs = "{'readonly': [('state','!=','draft')]}">
+                            <tree editable='bottom'> 
+                                <!-- LEBIH BAGUS YGY NAMBAHIN EDITABLE -->
+                                <field name="barang_id"/>
+                                <field name="harga_satuan"/>
+                                <field name="qty"/>
+                                <field name="subtotal" sum="Total"/>
+                            </tree>
+                       </field> 
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- klasikmart.penjualan action window -->
+    <record id="klasikmart_penjualan_action" model="ir.actions.act_window">
+        <field name="name">Penjualan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">klasikmart.penjualan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="penjualan_view_menu_act" 
+            name="Penjualan" 
+            parent="klasikmart_transaksi_menu_categ" 
+            action="klasikmart_penjualan_action" 
+            sequence="10"/>
+
+</odoo>
