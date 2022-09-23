@@ -1,0 +1,1 @@
+./odoo-bin --addons-path=/home/deka/odoo/odoo/addons,/home/deka/odoo/odoo/dekamart -r deka --xmlrpc-port=8070 --db_port 5432 -d dekamart --limit-memory-hard 0 --limit-time-real=10000 -u dekamart
